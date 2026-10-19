@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.env*
+*.local
+README.md
+Dockerfile
+.dockerignore
+api_response_test.json
+debug_backend.json
+*.log

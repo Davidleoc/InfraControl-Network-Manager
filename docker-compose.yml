@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  infracontrol:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: infracontrol-network-manager:latest
+    container_name: infracontrol-manager
+    ports:
+      - "3000:3000"
+    # Todas as variáveis (Jira, LDAP, JWT, e-mail) vêm do arquivo .env — veja .env.example
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      # Lista de destinatários do backup semanal (crie a partir de emails.example.txt)
+      - ./emails.txt:/app/emails.txt:ro
+    restart: always
